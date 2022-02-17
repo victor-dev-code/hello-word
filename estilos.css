@@ -1,0 +1,12 @@
+#costados {
+    height: 500px;
+    background:lavender;
+}
+#horaActual {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: midnightblue;
+}
+
+#oculto {
+    visibility: hidden;
+}
