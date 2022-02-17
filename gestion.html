@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+    <title>Sistema de Gestion de vulnerabilidades</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="estilos.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="funciones.js"></script>
+	</head>
+    <body class="container-fluid p-3 my-3 text-center">
+        <header class="container-fluid p-3 my-3 bg-success text-white">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="bg-primary col-sm-8">
+                    <h1>SISTEMA DE GESTIÓN DE VULNERABILIDADES</h1>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div><br /><br /></div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 text-left">
+                    <label for="region">Región</label>
+                </div>
+                <div class="col-sm-3">
+                    <select id="region" class="form-control">
+                        <option>Xalapa</option>
+                        <option>Veracruz</option>
+                        <option>Orizaba/Cordoba</option>
+                        <option>Poza Rica</option>
+                    </select>
+                </div>
+                <div class="col-sm-2 text-left">
+                    <label for="segmento">Segmento de red</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="segmento" class="form-control form-control-sm" placeholder="Segmento de red" required />
+                </div>
+                <div class="col-sm-1"></div>
+            </div> <br />
+            <div class="row" id="oculto">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 text-left">
+                    <label for="departamento">Departamento</label>
+                </div>
+                <div class="col-sm-3">
+                    <select id="departamento" class="form-control">
+                        <option>Departamento de ...</option>
+                        <option>Departamento de ...</option>
+                        <option>Departamento de ...</option>
+                        <option>Departamento de ...</option>
+                    </select>
+                </div>
+                <div class="col-sm-2 text-left">
+                    <label for="responsable" >Responsable del departamento</label>
+                </div>
+                <div class="col-sm-3 ">
+                    <input type="text" id="responsable" class="form-control form-control-sm" placeholder="Nombre del responsable" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div><br />
+            <div class="row" id="oculto">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 text-left">
+                    <label for="fecha">Fecha de creación</label>
+                </div>
+                <div class="col-sm-3 ">
+                    <input type="text" id="fecha" class="form-control form-control-sm" placeholder="Fecha de creación" required />
+                </div>
+                <div class="col-sm-6"></div>
+            </div><br />
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3 text-left">
+                    <button id="enviar" type="button" class="btn btn-primary active">Desplegar info.</button>
+                </div>
+                <div class="col-sm-6"></div>
+            </div>
+        </header>
+        
+        <article class="container" style="margin-top:30px">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div id="costados">
+                        <p>La hora actual es: </p>
+                        <h3 id="horaActual"></h3>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <h3 class="text-left">Información de los tickets solicitada</h3>
+                    <p class="text-left">Introduzca el dato especifico que desea buscar de la información solicitada anteriormente</p>
+                    <input class="form-control" id="busqueda" type="text" placeholder="Buscar...">
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Dirección IP</th>
+                                    <th>Criticidad</th>
+                                    <th>Dependecia</th>
+                                    <th>Segmento de red</th>
+                                    <th>Vulnerabilidad</th>
+                                    <th>Fecha de creación</th>
+                                    <th>Fecha de atención</th>
+                                    <th>Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="datosTabla">
+                                <tr>
+                                    <th>192.168.0.6</th>
+                                    <th>Alta</th>
+                                    <th>Departamento ...</th>
+                                    <th>192.168.0.0</th>
+                                    <th>No actualizado</th>
+                                    <th>22/10/21</th>
+                                    <th>23/10/21</th>
+                                    <th>solucionado</th>
+                                </tr>
+                                <tr>
+                                    <th>192.168.0.7</th>
+                                    <th>Alta</th>
+                                    <th>Departamento ...</th>
+                                    <th>192.168.0.0</th>
+                                    <th>Cifrado</th>
+                                    <th>27/11/21</th>
+                                    <th>29/10/21</th>
+                                    <th>abierto</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">Anterior</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">4</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">5</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">Siguiente</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <div id="costados">cualquier cosa</div>
+                </div>
+            </div>
+        </article>
+        
+        <footer class="container-fluid p-3 my-3 bg-primary">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-7 text-left text-white">
+                    Sistema de Gestión de Vulnerabilidades <br />
+                    Departamento de Seguridad y Monitoreo <br />
+                    Universidad Veracruzana (UV) <br />
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </footer>
+    </body>
+</html>
